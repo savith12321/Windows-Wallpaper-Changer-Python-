@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from PIL import Image
 import pyautogui
 import os
-
+from os import listdir
 
 url = "https://www.google.com/search?hl=jp&q="
 setter = "&btnG=Google+Search&tbs=0&safe=off&tbm=isch"
@@ -18,15 +18,17 @@ try:
     os.mkdir(SAVE_FOLDER)
 except:
     pass
+for file in os.listdir(SAVE_FOLDER):
+    os. remove(SAVE_FOLDER + "\\"+file)
 
 '''
 PUT AMOUNT OF IMAGES HERE V
 '''
-imgAmount = 24
+imgAmount = 20
 '''
 COOLDOWN BETWEEN EACH PICTURE BEING SHOWN V
 '''
-cooldown = 28800
+cooldown = 10
 
 
 '''
