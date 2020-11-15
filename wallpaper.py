@@ -10,9 +10,9 @@ from os import listdir
 url = "https://www.google.com/search?hl=jp&q="
 setter = "&btnG=Google+Search&tbs=0&safe=off&tbm=isch"
 
-'''
-WERE U WANT TO MAKE THE FOLDER
-'''
+
+# WERE U WANT TO MAKE THE FOLDER V
+
 SAVE_FOLDER = r"C:\Users\Desktop\images"
 try:
     os.mkdir(SAVE_FOLDER)
@@ -21,19 +21,17 @@ except:
 for file in os.listdir(SAVE_FOLDER):
     os. remove(SAVE_FOLDER + "\\"+file)
 
-'''
-PUT AMOUNT OF IMAGES HERE V
-'''
+
+# PUT AMOUNT OF IMAGES HERE V
 imgAmount = 50
-'''
-COOLDOWN BETWEEN EACH PICTURE BEING SHOWN V
-'''
+
+# COOLDOWN BETWEEN EACH PICTURE BEING SHOWN V
 cooldown = 10
 
 
-'''
-DONT TOUCH THE REST C; (unless u know python :P)
-'''
+
+#DONT TOUCH THE REST C; (unless u know python :P)
+
 imglinks = []
 def main():
     download_images()
