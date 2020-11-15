@@ -13,7 +13,7 @@ setter = "&btnG=Google+Search&tbs=0&safe=off&tbm=isch"
 '''
 WERE U WANT TO MAKE THE FOLDER
 '''
-SAVE_FOLDER = r"C:\Users\Desktop\Scripts\images"
+SAVE_FOLDER = r"C:\Users\Desktop\images"
 try:
     os.mkdir(SAVE_FOLDER)
 except:
