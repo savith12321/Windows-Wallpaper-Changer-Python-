@@ -6,27 +6,17 @@ from PIL import Image
 import pyautogui
 import os
 from os import listdir
+import multiprocessing
 
-url = "https://www.google.com/search?hl=jp&q="
-setter = "&btnG=Google+Search&tbs=0&safe=off&tbm=isch"
+url = "https://wallhaven.cc/search?q="
 
-
-# WERE U WANT TO MAKE THE FOLDER V
-
-SAVE_FOLDER = r"C:\Users\Desktop\images"
-try:
-    os.mkdir(SAVE_FOLDER)
-except:
-    pass
-for file in os.listdir(SAVE_FOLDER):
-    os. remove(SAVE_FOLDER + "\\"+file)
 
 
 # PUT AMOUNT OF IMAGES HERE V
-imgAmount = 50
+imgAmount = 12
 
 # COOLDOWN BETWEEN EACH PICTURE BEING SHOWN V
-cooldown = 10
+cooldown = 3600
 
 
 
@@ -37,38 +27,50 @@ def main():
     download_images()
 
 def download_images():
+    try:
+        os.mkdir( r"C:\Users\Desktop\images")
+        SAVE_FOLDER = r"C:\Users\Desktop\images"
+    except:
+        SAVE_FOLDER = r"C:\Users\Desktop\images"
+    for file in os.listdir(SAVE_FOLDER):
+        os. remove(SAVE_FOLDER + "\\"+file)
     data = pyautogui.prompt("What Wallpaper Do You Want Today!")
+    while data == "":
+        pyautogui.alert("No word found!")
+        data = pyautogui.prompt("What Wallpaper Do You Want Today!")
     print("searching...")
-    searchurl = url + data + setter
+    searchurl = url + data
 
     response = requests.get(searchurl)
     html = response.text
 
     soup = BeautifulSoup(html, "html.parser")
-    results = soup.findAll("img", limit=imgAmount + 1)
-    print("found " + str(len(results)-1) + " images of " + data)
-
+    results = soup.findAll("img", limit=imgAmount+1)
+    print("found " + str(len(results)-1) + " images of  " + data)
+    if len(results)-1 == 0:
+        pyautogui.alert("No" + " images of  " + data)
     results.pop(0)
     for result in results:
-        imglinks.append(result["src"])
-
-    for i, imglink in enumerate(imglinks):
+        imglinks.append(result["data-src"])
+    print(imglinks)
+    for imglink in imglinks:
         response = requests.get(imglink)
-
-        imagename = SAVE_FOLDER + "\\" + data + str(i+1) + ".jpg"
+        imagename = SAVE_FOLDER + "\\" + data + str(imglinks.index(imglink)+1) + ".jpg"
         with open(imagename, "wb") as file:
             file.write(response.content)
 
+    on = True
     for i, imglink in enumerate(imglinks):
         print("imageloaded")
         img = SAVE_FOLDER + "\\" + data + str(i+1) + ".jpg"
-
         new = Image.open(img)
         new = new.resize((1400,  900))
-        new.save(img, quality=200000, optimize=True)
+        new.save(img, quality=94, optimize=True)
         ctypes.windll.user32.SystemParametersInfoW(20, 0, img, 0)
         time.sleep(cooldown)
         os. remove(img)
+
+
 
 if __name__ == "__main__":
     main()
