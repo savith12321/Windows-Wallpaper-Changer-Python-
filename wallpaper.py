@@ -26,7 +26,7 @@ cooldown = 3600
 
 #DONT TOUCH THE REST C; (unless u know python :P)
 
-user = "User Here"
+user = pyautogui.prompt("What is your computers user")
 
 imglinks = []
 def main():
