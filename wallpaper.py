@@ -6,7 +6,6 @@ from PIL import Image
 import pyautogui
 import os
 from os import listdir
-import multiprocessing
 
 url = "https://wallhaven.cc/search?q="
 
