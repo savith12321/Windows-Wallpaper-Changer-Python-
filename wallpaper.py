@@ -34,8 +34,8 @@ def main():
 
 def download_images():
     try:
-        os.mkdir(r"C:\Users" + user + "\Desktop\images")
-        SAVE_FOLDER = r"C:\Users" + user + "\Desktop\images"
+        os.mkdir(r"C:\Users\\" + user + "\Desktop\images")
+        SAVE_FOLDER = r"C:\Users\\" + user + "\Desktop\images"
     except:
         SAVE_FOLDER = r"C:\Users" + user + "\Desktop\images"
     for file in os.listdir(SAVE_FOLDER):
