@@ -17,10 +17,10 @@ url = "https://wallhaven.cc/search?q="
 
 
 # PUT AMOUNT OF IMAGES HERE V
-imgAmount = 12
+imgAmount = pyautogui.prompt("How many images do you want")
 
 # COOLDOWN BETWEEN EACH PICTURE BEING SHOWN V
-cooldown = 3600
+cooldown = pyautogui.prompt("How long do you want each image to show")
 
 
 
@@ -75,7 +75,8 @@ def download_images():
         ctypes.windll.user32.SystemParametersInfoW(20, 0, img, 0)
         time.sleep(cooldown)
         os. remove(img)
-
+    
+    os.remove(r"C:\Users\\" + user + "\Desktop\images")
 
 
 if __name__ == "__main__":
