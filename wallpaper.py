@@ -7,6 +7,11 @@ import pyautogui
 import os
 from os import listdir
 
+#pip install requests
+#pip install pyautogui
+#pip install bs4
+#pip install pillow
+
 url = "https://wallhaven.cc/search?q="
 
 
@@ -21,16 +26,18 @@ cooldown = 3600
 
 #DONT TOUCH THE REST C; (unless u know python :P)
 
+user = "User Here"
+
 imglinks = []
 def main():
     download_images()
 
 def download_images():
     try:
-        os.mkdir( r"C:\Users\Desktop\images")
-        SAVE_FOLDER = r"C:\Users\Desktop\images"
+        os.mkdir(r"C:\Users" + user + "\Desktop\images")
+        SAVE_FOLDER = r"C:\Users" + user + "\Desktop\images"
     except:
-        SAVE_FOLDER = r"C:\Users\Desktop\images"
+        SAVE_FOLDER = r"C:\Users" + user + "\Desktop\images"
     for file in os.listdir(SAVE_FOLDER):
         os. remove(SAVE_FOLDER + "\\"+file)
     data = pyautogui.prompt("What Wallpaper Do You Want Today!")
